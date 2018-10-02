@@ -1,0 +1,18 @@
+{
+    "extends": ["eslint:recommended", "google"],
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "linebreak-style":["error","windows"],
+        "no-console":"off",
+        "require-jsdoc":"off"
+    },
+    "parserOptions": {
+        "ecmaVersion": 9,
+        "sourceType": "module"
+    },
+    "env": {
+        "browser": true,
+        "node": false
+    }
+}
