@@ -3,22 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "author": "Sergey 'Biribiri' Fokin",
+  "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "webpack-dev-server --open"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "css-loader": "^1.0.0",
     "eslint": "^5.6.1",
     "eslint-config-google": "^0.10.0",
     "file-loader": "^2.0.0",
     "style-loader": "^0.23.0",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
   },
-  "dependencies": {}
+  "dependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
 }

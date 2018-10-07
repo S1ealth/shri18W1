@@ -1,11 +1,44 @@
 <!doctype html>
   <html>
    <head>
-      <meta name='robots' content='noindex'>
-      <meta name='viewport' content='width=device-width, initial-scale=1'>
-     <title>Яндекс дом</title>
+      <meta name="robots" content="noindex">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>Yandex House</title>
    </head>
    <body>
-    <script src='main.js'></script>
+     <header>
+        <img  class="logo" src="./yandexHouse2x.png">
+          <ul class="nav">
+              <li><a href="#">События</a></li>
+              <li><a href="#">Сводка</a></li>
+              <li><a href="#">Устройства</a></li>
+              <li><a href="#">Сценарии</a></li>
+            </ul>
+     </header>
+     <section>
+       <h1 class="lenta bold">Лента событий</h1>
+       <div class='card-grid' id="card-grid"></div>
+     </section>
+
+     <template id="card-tempo">
+      <div class="card">
+        <p class="title bold"></p>
+        <img class="icon">
+        <p class="description"></p>
+        <p class="source"></p>
+        <p class="time"></p>
+      </div>
+    </template>
+
+    <footer>
+      <a href='#'>Помощь</a>
+      <a href='#'>Обратная связь</a>
+      <a href='#'>Разработчикам</a>
+      <a href='#'>Условия использования</a>
+      <a href='#'>© 2001–2017  ООО «Яндекс»</a>
+      <a href="./license.pdf" target="_blank">copiright</a>
+    </footer>
+    <script src='bundle.js'></script>
    </body>
   </html>
