@@ -14,6 +14,7 @@ ul {
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(auto-fill,50%);
   grid-auto-flow: dense;
+  grid-gap: 16px;
 }
 header, footer {
   display: grid;
@@ -36,15 +37,34 @@ header, footer {
 /* card layout */
 .card {
   display: grid;
-  grid-template-columns: 50% 50%;
-  /* grid-auto-rows: repeat(2, 100%); */
+  grid-template-columns: repeat(auto-fill, 100%);
+  grid-template-rows: repeat(auto-fill,minmax(100px,120px));
   color: #333333;
+  align-items: center;
+}
+.critical {
+  background: #DB5341;
+  border-radius: 20px 20px 0 0;
+}
+.info {
+  background: #FAFAFA;
+  border-radius: 20px;
+}
+.header {
+  display: grid;
+  grid-template-rows: 100% 100%;
+  grid-template-columns: 50% 50%;
+  padding: 16px;
+  align-items: center;
+}
+.body {
+  padding: 16px;
 }
 .title {
-  grid-area: 1/1/span 1/span 2;
+  grid-area: 1/2/span 1/span 1
 }
 .icon {
-  
+  grid-area: 1/1/span 1/span 1;
 }
 .source {
   grid-area: 2/1/span 1/span 1;

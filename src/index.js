@@ -1,7 +1,15 @@
 import './style.css';
 import Events from './events.json';
 import Stats from './stats.svg';
-
+import Key from './key.svg';
+import Robot from './robot-cleaner.svg';
+import Router from './router.svg';
+import Thermal from './thermal.svg';
+import Ac from './air-conditioner.svg';
+import Music from './music.svg';
+import Fridge from './fridge.svg';
+import Battery from './battery.svg';
+import Kettle from './kettle.svg';
 console.log('hello there');
 console.log(Events.events);
 
@@ -27,6 +35,33 @@ function createCard(e) {
       case 'stats':
         icon.src = Stats;
         break;
+      case 'key':
+        icon.src = Key;
+        break;
+      case 'robot-cleaner':
+        icon.src = Robot;
+        break;
+      case 'router':
+        icon.src = Router;
+        break;
+      case 'thermal':
+        icon.src = Thermal;
+        break;
+      case 'ac':
+        icon.src = Ac;
+        break;
+      case 'music':
+        icon.src = Music;
+        break;
+      case 'fridge':
+        icon.src = Fridge;
+        break;
+      case 'battery':
+        icon.src = Battery;
+        break;
+      case 'kettle':
+        icon.src = Kettle;
+        break;
       default:
         icon.src = '';
     }
@@ -47,6 +82,13 @@ function createCard(e) {
     console.log(e);
     if (e.size === 's') {
       cloneCard.classList.add('card_s');
+    }
+    if (e.type === 'info') {
+      // cloneCard.classList.add('info');
+    } else
+    if (e.type === 'critical') {
+      // cloneCard.classList.add('critical');
+      cloneCard.querySelector('.header').classList.add('critical');
     }
     cardGrid.appendChild(clone);
   } else {
