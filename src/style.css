@@ -105,31 +105,39 @@ header, footer {
  */
  .surveillance-grid {
    display: grid;
-   grid-template-rows: repeat(4,1fr);
-   grid-template-columns: repeat(4,1fr);
-   grid-template-areas: 'c1 c1 c2 c2'
-                        'c1 c1 c2 c2'
-                        'c3 c3 c4 c4'
-                        'c3 c3 c4 c4'
-                        ;
+   grid-template:
+   'c1 c2' 300px
+   'c3 c4' 300px
+   ;
+ }
+ @media screen and (max-width: 320px) {
+  .surveillance-grid {
+    grid-template:
+    'c1' 300px
+    'c2' 300px
+    'c3' 300px
+    'c4' 300px
+    ;
+  }
+ }
+ .center {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
  }
  .video {
-   min-width: 100%;
-   min-height: 100%;
+   max-width: 300px;
+   max-height: 300px;
  }
  .cam1 {
    grid-area: c1;
-   background-color: red;
  }
  .cam2 {
    grid-area: c2;
-   background-color: black;
  }
  .cam3 {
    grid-area: c3;
-   background-color: blue;
  }
  .cam4 {
    grid-area: c4;
-   background-color: green;
  }
