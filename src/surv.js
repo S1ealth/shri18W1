@@ -20,19 +20,6 @@ let cameras = [
     src: 'http://localhost:9191/master?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fhall%2Fmaster.m3u8',
   },
 ];
-function drawCanvas(canvId, src) {
-  let canvas = document.getElementById(canvId);
-  if (canvas.getContext) {
-    let ctx = canvas.getContext('2d');
-    ctx.drawImage(video, 0, 0);
-    // drawing code here
-  } else {
-    // canvas-unsupported code here
-  }
-}
-function loop() {
-  requestAnimationFrame(loop);
-}
 console.log('im watching you');
 window.addEventListener('load', (e)=> {
   if (Hls.isSupported()) {
@@ -41,12 +28,8 @@ window.addEventListener('load', (e)=> {
       let {container, src} = camera;
       console.log(camera);
       getVideo(container, src);
-      if (camera.hasOwnProperty('canvas')) {
-
-      }
     });
   }
-  drawCanvas('canv-1');
 });
 function getVideo(container, src) {
   let video = document.getElementById(container);
@@ -64,6 +47,7 @@ function getVideo(container, src) {
       console.log('loaded. found ' + data.levels.length + ' quality level');
       video.play();
       console.log(hls.currentLevel);
+      console.log(hls.levels);
     });
     hls.on(Hls.Events.ERROR, function(event, data) {
       if (data.fatal) {

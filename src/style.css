@@ -106,9 +106,11 @@ header, footer {
  .surveillance-grid {
    display: grid;
    grid-template:
-   'c1 c2' 300px
-   'c3 c4' 300px
+   'c1 c2' 1fr
+   'c3 c4' 1fr
+   /1fr 1fr
    ;
+   grid-gap: 20px;
  }
  @media screen and (max-width: 320px) {
   .surveillance-grid {
@@ -121,13 +123,12 @@ header, footer {
   }
  }
  .center {
-  justify-content: center;
-  align-content: center;
+  justify-items: center;
   align-items: center;
  }
  .video {
-   max-width: 300px;
-   max-height: 300px;
+   max-width: 480px;
+   max-height: 360px;
  }
  .cam1 {
    grid-area: c1;
