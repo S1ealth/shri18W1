@@ -3,17 +3,14 @@ const util = require('util');
 const getFile = util.promisify(fs.readFile);
 
 function parseData(data) {
-  data = JSON.parse(data);
-  return data;
+  return JSON.parse(data);
 }
 function sortData(data, type) {
-  // console.log(data);
   return data.filter((element) => {
     return element.type == type;
   });
 }
 function createMetadata(data) {
-  console.log(data.length);
   return {
     totalEvents: data.length,
   };
