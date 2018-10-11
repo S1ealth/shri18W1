@@ -15,8 +15,8 @@ router.use(bodyParser.json());
 
 router.post('/', (req, res) => {
   let limit = null;
-  if (req.query.hasOwnProperty('limit')) {
-    limit = req.query.limit;
+  if (req.body.hasOwnProperty('limit')) {
+    limit = req.body.limit;
   }
   if (req.body.hasOwnProperty('type')) {
     if (req.body.type === 'info' || req.body.type === 'critical') {

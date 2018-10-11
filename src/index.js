@@ -25,16 +25,14 @@ window.addEventListener('load', () => {
 });
 async function fetchEvents(type, limit) {
   let myHeaders = new Headers();
-  let endpoint;
+  let endpoint = 'http://localhost:8000/api/events';
   myHeaders.append('x-requested-with', 'XMLHttpRequest');
   let params = new URLSearchParams();
   if (type) {
     params.append('type', type);
   }
-  if (!limit) {
-    endpoint = 'http://localhost:8000/api/events';
-  } else {
-    endpoint = 'http://localhost:8000/api/events?limit='+limit;
+  if (limit) {
+    params.append('limit', limit);
   }
   try {
     let result = await fetch(endpoint,
