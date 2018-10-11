@@ -1,5 +1,4 @@
 import './style.css';
-import Events from './events.json';
 import Stats from './stats.svg';
 import Key from './key.svg';
 import Robot from './robot-cleaner.svg';
@@ -11,13 +10,40 @@ import Fridge from './fridge.svg';
 import Battery from './battery.svg';
 import Kettle from './kettle.svg';
 console.log('hello there');
-console.log(Events.events);
 
 window.addEventListener('load', () => {
-  Events.events.forEach((element) => {
-    createCard(element);
+  fetchEvents().then((events) => {
+    events = events.events;
+    events.forEach((element) => {
+      createCard(element);
+    });
   });
 });
+async function fetchEvents(type) {
+  let myHeaders = new Headers();
+  myHeaders.append('x-requested-with', 'XMLHttpRequest');
+  let params = new URLSearchParams();
+  if (type) {
+    params.append('type', type);
+  }
+  try {
+    let result = await fetch('http://localhost:8000/api/events',
+        {
+          method: 'POST',
+          body: params,
+          headers: myHeaders,
+        });
+    if (result.status !== 200) {
+      throw new Error(`failed with code ${result.status}`);
+    } else {
+      let data = await result.json();
+      return data;
+    }
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+}
 function createCard(e) {
   // Test to see if the browser supports the HTML template element by checking
 // for the presence of the template element's content attribute.

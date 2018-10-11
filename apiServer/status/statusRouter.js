@@ -1,6 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 const status = require('./status');
+//  deal with cors requests
 router.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers',
@@ -9,10 +10,6 @@ router.use((req, res, next) => {
 });
 router.get('/', (req, res) => {
   const uptime = status.getUptime();
-  if (req.query.mode === 'jojo') {
-    res.status(200).type('json').send({ZAWARUDO: uptime});
-  } else {
-    res.status(200).type('json').send({uptime: uptime});
-  }
+  res.status(200).type('json').send(uptime);
 });
 module.exports = router;
