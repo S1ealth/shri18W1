@@ -23,16 +23,16 @@ async function getEvents(type, limit) {
   let parsedData = parseData(rawData);
   if (type) {
     parsedData.events = sortData(parsedData.events, type);
+    parsedData.metadata = createMetadata(parsedData.events);
     if (limit !== null) {
       parsedData.events = cutData(parsedData.events, limit);
     }
-    parsedData.metadata = createMetadata(parsedData.events);
     return parsedData;
   } else {
+    parsedData.metadata = createMetadata(parsedData.events);
     if (limit !== null) {
       parsedData.events = cutData(parsedData.events, limit);
     }
-    parsedData.metadata = createMetadata(parsedData.events);
     return parsedData;
   }
 }
