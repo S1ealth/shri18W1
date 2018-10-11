@@ -2,17 +2,22 @@ const fs = require('fs');
 const util = require('util');
 const getFile = util.promisify(fs.readFile);
 
-async function getEvents(type) {
-  let data = await getFile('./apiServer/data/events.json', 'utf8');
+function parseData(data) {
   data = JSON.parse(data);
-  if (type === 'info' || type === 'critical') {
-    data = data.events;
-    let sortedArr = data.filter((element) => {
-      return element.type == type;
-    });
-    return sortedArr;
+  return data.events;
+}
+function sortData(data, type) {
+  return data.filter((element) => {
+    return element.type == type;
+  });
+}
+async function getEvents(type) {
+  let rawData = await getFile('./apiServer/data/events.json', 'utf8');
+  let parsedData = parseData(rawData);
+  if (type) {
+    return sortData(parsedData, type);
   } else {
-    return data;
+    return parsedData;
   }
 }
 module.exports.getEvents = getEvents;

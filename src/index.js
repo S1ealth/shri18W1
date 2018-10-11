@@ -13,7 +13,6 @@ console.log('hello there');
 
 window.addEventListener('load', () => {
   fetchEvents().then((events) => {
-    events = events.events;
     events.forEach((element) => {
       createCard(element);
     });
