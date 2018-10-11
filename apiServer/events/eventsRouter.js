@@ -14,20 +14,24 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
 router.post('/', (req, res) => {
+  let limit = null;
+  if (req.query.hasOwnProperty('limit')) {
+    limit = req.query.limit;
+  }
   if (req.body.hasOwnProperty('type')) {
-    if (req.body.type !== 'info' && req.body.type !== 'critical') {
-      res.status(400).send('incorrect type');
-    } else {
-      events.getEvents(req.body.type)
+    if (req.body.type === 'info' || req.body.type === 'critical') {
+      events.getEvents(req.body.type, limit)
           .then((data) => {
             res.status(200).json(data);
           })
           .catch((e) => {
             throw e;
           });
+    } else {
+      res.status(400).send('incorrect type');
     }
   } else {
-    events.getEvents(req.body.type)
+    events.getEvents(false, limit)
         .then((data) => {
           res.status(200).json(data);
         })
