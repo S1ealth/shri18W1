@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "webpack-dev-server --open",
-    "server": "node ./apiServer/server.js"
+    "server": "nodemon ./apiServer/server.js"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",

@@ -2,8 +2,6 @@ const express = require('express');
 const router = new express.Router();
 const bodyParser = require('body-parser');
 const events = require('./events');
-// possible types of events.
-const types = ['info', 'critical'];
 //  deal with cors requests
 router.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -17,28 +15,29 @@ router.use(bodyParser.json());
 
 router.post('/', (req, res) => {
   let limit = null;
+  let exq = [];
   if (req.body.hasOwnProperty('limit')) {
     limit = req.body.limit;
   }
   if (req.body.hasOwnProperty('type')) {
-    let type = types.find((type) => {
-      return type === req.body.type;
-    });
-    if (req.body.type === type) {
-      events.getEvents(req.body.type, limit)
-          .then((data) => {
+    const queryTypes = events.parseQuery(req.body.type);
+    events.getEventsType()
+        .then((types) => {
+          queryTypes.forEach((qType) => {
+            exq.push(types.find((jType) => {
+              return qType === jType;
+            }));
+          });
+          console.log(exq);
+          let x = exq.map((type) => {
+            return events.getEvents(type, limit);
+          });
+          Promise.all(x).then((data) => {
             res.status(200).json(data);
           })
-          .catch((e) => {
-            throw e;
-          });
-    } else {
-      res.status(400).send('incorrect type');
-    }
-  } else {
-    events.getEvents(false, limit)
-        .then((data) => {
-          res.status(200).json(data);
+              .catch((e) => {
+                res.status(400).send('incorrect type');
+              });
         })
         .catch((e) => {
           throw e;
