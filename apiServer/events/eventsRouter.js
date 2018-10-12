@@ -35,8 +35,8 @@ router.post('/', (req, res) => {
           Promise.all(x).then((data) => {
             console.log(data.length);
             let result = {
-              events:[],
-            }
+              events: [],
+            };
             result.events = data.concat(...data);
             result.events.splice(0, data.length);
             res.status(200).json(result);

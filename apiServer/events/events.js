@@ -14,11 +14,11 @@ function parseQuery(query) {
   let result = query.split(':');
   return result;
 }
-function createMetadata(data) {
-  return {
-    totalEvents: data.length,
-  };
-}
+// function createMetadata(data) {
+//   return {
+//     totalEvents: data.length,
+//   };
+// }
 function cutData(data, end) {
   return data.slice(undefined, end);
 }
