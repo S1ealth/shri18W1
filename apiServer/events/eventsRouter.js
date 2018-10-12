@@ -33,9 +33,16 @@ router.post('/', (req, res) => {
             return events.getEvents(type, limit);
           });
           Promise.all(x).then((data) => {
-            res.status(200).json(data);
+            console.log(data.length);
+            let result = {
+              events:[],
+            }
+            result.events = data.concat(...data);
+            result.events.splice(0, data.length);
+            res.status(200).json(result);
           })
               .catch((e) => {
+                console.log(e);
                 res.status(400).send('incorrect type');
               });
         })

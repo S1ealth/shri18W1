@@ -26,14 +26,14 @@ async function getEvents(type, limit) {
   let rawData = await getFile('./apiServer/data/events.json', 'utf8');
   let parsedData = parseData(rawData);
   if (type !== undefined) {
-    parsedData.metadata = createMetadata(parsedData.events);
+    // parsedData.metadata = createMetadata(parsedData.events);
     parsedData.events = sortData(parsedData.events, type);
     if (limit !== null) {
       parsedData.events = cutData(parsedData.events, limit);
     }
-    return parsedData;
+    return parsedData.events;
   } else {
-    throw new Error();
+    throw new Error(400);
   }
 }
 async function getEventsType() {
