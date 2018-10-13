@@ -10,9 +10,8 @@ function sortData(data, type) {
     return element.type == type;
   });
 }
-function parseQuery(query) {
-  let result = query.split(':');
-  return result;
+function mergeEvents(events, ammount) {
+  return events.concat(...events).splice(ammount);
 }
 // function createMetadata(data) {
 //   return {
@@ -42,8 +41,10 @@ async function getEventsType() {
   let eventTypes = parsedData.events.map((event) => {
     return event.type;
   });
-  return eventTypes;
+  return eventTypes.filter(function(item, pos) {
+    return eventTypes.indexOf(item) === pos;
+  });
 }
 module.exports.getEvents = getEvents;
 module.exports.getEventsType = getEventsType;
-module.exports.parseQuery = parseQuery;
+module.exports.mergeEvents = mergeEvents;

@@ -9,46 +9,55 @@ router.use((req, res, next) => {
       'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+const queryParser = function(req, res, next) {
+  if (req.body.hasOwnProperty('type')) {
+    req.body.type = req.body.type.split(':');
+    req.body.type = req.body.type.filter((item, pos) => {
+      return req.body.type.indexOf(item) === pos;
+    });
+    next();
+  } else {
+    console.log(req.body.hasOwnProperty('type'));
+    res.status(400).send('incorrect type');
+  }
+};
 //  for body parsing
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
-router.post('/', (req, res) => {
+router.post('/', queryParser, (req, res) => {
   let limit = null;
-  let exq = [];
+  const {type} = req.body;
   if (req.body.hasOwnProperty('limit')) {
     limit = req.body.limit;
   }
-  if (req.body.hasOwnProperty('type')) {
-    const queryTypes = events.parseQuery(req.body.type);
-    events.getEventsType()
-        .then((types) => {
-          queryTypes.forEach((qType) => {
-            exq.push(types.find((jType) => {
-              return qType === jType;
-            }));
-          });
-          console.log(exq);
-          let x = exq.map((type) => {
-            return events.getEvents(type, limit);
-          });
-          Promise.all(x).then((data) => {
-            console.log(data.length);
-            let result = {
-              events: [],
-            };
-            result.events = data.concat(...data);
-            result.events.splice(0, data.length);
-            res.status(200).json(result);
-          })
-              .catch((e) => {
-                console.log(e);
-                res.status(400).send('incorrect type');
+  events.getEventsType()
+      .then((typesArr) => {
+        let eT = type.map(
+            (bType) => {
+              return typesArr.find((aType) => {
+                return bType === aType;
               });
-        })
-        .catch((e) => {
-          throw e;
+            }
+        );
+        console.log('eT');
+        console.log(eT);
+        let eQ = eT.map((type) => {
+          return events.getEvents(type, limit);
         });
-  }
+        Promise.all(eQ)
+            .then((data) => {
+              let result = {
+                events: events.mergeEvents(data, data.length),
+              };
+              res.status(200).json(result);
+            })
+            .catch((e) => {
+              res.status(400).send('incorrect type');
+            });
+      })
+      .catch((e) => {
+        throw e;
+      });
 });
 module.exports = router;
