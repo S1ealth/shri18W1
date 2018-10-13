@@ -17,7 +17,8 @@ const queryParser = function(req, res, next) {
     });
     next();
   } else {
-    res.status(400).send('incorrect type');
+    next();
+    // res.status(400).send('incorrect type');
   }
 };
 //  for body parsing
@@ -26,35 +27,50 @@ router.use(bodyParser.json());
 
 router.post('/', queryParser, (req, res) => {
   let limit = null;
-  const {type} = req.body;
   if (req.body.hasOwnProperty('limit')) {
     limit = req.body.limit;
   }
-  events.getEventsType()
-      .then((typesArr) => {
-        let eT = type.map(
-            (bType) => {
-              return typesArr.find((aType) => {
-                return bType === aType;
+  if (req.body.hasOwnProperty('type')) {
+    const {type} = req.body;
+    events.getEventsType()
+        .then((typesArr) => {
+          let eT = type.map(
+              (bType) => {
+                return typesArr.find((aType) => {
+                  return bType === aType;
+                });
+              }
+          );
+          let eQ = eT.map((type) => {
+            return events.getEvents(type, limit);
+          });
+          Promise.all(eQ)
+              .then((data) => {
+                let result = {
+                  events: events.mergeEvents(data, data.length),
+                };
+                res.status(200).json(result);
+              })
+              .catch((e) => {
+                res.status(400).send('incorrect type');
               });
-            }
-        );
-        let eQ = eT.map((type) => {
-          return events.getEvents(type, limit);
+        })
+        .catch((e) => {
+          throw e;
         });
-        Promise.all(eQ)
-            .then((data) => {
+  } else {
+    events.getEvents('all')
+        .then(
+            (data) => {
               let result = {
-                events: events.mergeEvents(data, data.length),
+                events: data,
               };
               res.status(200).json(result);
-            })
-            .catch((e) => {
-              res.status(400).send('incorrect type');
-            });
-      })
-      .catch((e) => {
-        throw e;
-      });
+            }
+        )
+        .catch((e) => {
+          throw e;
+        });
+  }
 });
 module.exports = router;

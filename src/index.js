@@ -12,10 +12,9 @@ import Kettle from './images/kettle.svg';
 console.log('hello there');
 
 window.addEventListener('load', () => {
-  fetchEvents('info:critical').then((events) => {
+  fetchEvents().then((events) => {
     if (events.hasOwnProperty('events')) {
       events.events.forEach((element) => {
-        console.log(element);
         createCard(element);
       });
     } else {
