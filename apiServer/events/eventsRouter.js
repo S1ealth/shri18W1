@@ -17,7 +17,6 @@ const queryParser = function(req, res, next) {
     });
     next();
   } else {
-    console.log(req.body.hasOwnProperty('type'));
     res.status(400).send('incorrect type');
   }
 };
@@ -40,8 +39,6 @@ router.post('/', queryParser, (req, res) => {
               });
             }
         );
-        console.log('eT');
-        console.log(eT);
         let eQ = eT.map((type) => {
           return events.getEvents(type, limit);
         });
