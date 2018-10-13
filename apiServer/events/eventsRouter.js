@@ -26,21 +26,16 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
 router.post('/', queryParser, (req, res) => {
-  let limit = null;
-  if (req.body.hasOwnProperty('limit')) {
-    limit = req.body.limit;
-  }
+  const limit = req.body.hasOwnProperty('limit')? req.body.limit: null;
   if (req.body.hasOwnProperty('type')) {
     const {type} = req.body;
     events.getEventsType()
         .then((typesArr) => {
-          let eT = type.map(
-              (bType) => {
-                return typesArr.find((aType) => {
-                  return bType === aType;
-                });
-              }
-          );
+          let eT = type.map((bType) => {
+            return typesArr.find((aType) => {
+              return bType === aType;
+            });
+          });
           let eQ = eT.map((type) => {
             return events.getEvents(type, limit);
           });
@@ -60,14 +55,12 @@ router.post('/', queryParser, (req, res) => {
         });
   } else {
     events.getEvents('all')
-        .then(
-            (data) => {
-              let result = {
-                events: data,
-              };
-              res.status(200).json(result);
-            }
-        )
+        .then((data) => {
+          let result = {
+            events: data,
+          };
+          res.status(200).json(result);
+        })
         .catch((e) => {
           throw e;
         });
