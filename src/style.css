@@ -88,7 +88,7 @@ header, footer {
     font-size: 24px;
   }
   .nav-menu {
-    background-image: url('../src/icon_list_m@2x.png');
+    background-image: url('../src/images/icon_list_m@2x.png');
     background-repeat: no-repeat;
     width: 28px;
     height: 32px;
@@ -130,15 +130,18 @@ header, footer {
    max-width: 480px;
    max-height: 360px;
  }
- .cam1 {
+ .camera-1 {
    grid-area: c1;
  }
- .cam2 {
+ .camera-2 {
    grid-area: c2;
  }
- .cam3 {
+ .camera-3 {
    grid-area: c3;
  }
- .cam4 {
+ .camera-4 {
    grid-area: c4;
+ }
+ .hidden {
+   display: none;
  }

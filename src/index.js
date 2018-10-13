@@ -1,15 +1,15 @@
 import './style.css';
 import Events from './events.json';
-import Stats from './stats.svg';
-import Key from './key.svg';
-import Robot from './robot-cleaner.svg';
-import Router from './router.svg';
-import Thermal from './thermal.svg';
-import Ac from './air-conditioner.svg';
-import Music from './music.svg';
-import Fridge from './fridge.svg';
-import Battery from './battery.svg';
-import Kettle from './kettle.svg';
+import Stats from './images/stats.svg';
+import Key from './images/key.svg';
+import Robot from './images/robot-cleaner.svg';
+import Router from './images/router.svg';
+import Thermal from './images/thermal.svg';
+import Ac from './images/air-conditioner.svg';
+import Music from './images/music.svg';
+import Fridge from './images/fridge.svg';
+import Battery from './images/battery.svg';
+import Kettle from './images/kettle.svg';
 console.log('hello there');
 console.log(Events.events);
 

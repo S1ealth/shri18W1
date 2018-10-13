@@ -10,14 +10,17 @@ let cameras = [
   {
     container: 'camera-2',
     src: 'http://localhost:9191/master?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fcat%2Fmaster.m3u8',
+    canvas: 'canv-2',
   },
   {
     container: 'camera-3',
     src: 'http://localhost:9191/master?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fdog%2Fmaster.m3u8',
+    canvas: 'canv-3',
   },
   {
     container: 'camera-4',
     src: 'http://localhost:9191/master?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fhall%2Fmaster.m3u8',
+    canvas: 'canv-4',
   },
 ];
 console.log('im watching you');
@@ -25,14 +28,28 @@ window.addEventListener('load', (e)=> {
   if (Hls.isSupported()) {
     console.log('hello, hls.js (inside node)!');
     cameras.forEach((camera) => {
-      let {container, src} = camera;
+      let {container, src, canvas} = camera;
       console.log(camera);
       getVideo(container, src);
+      createCanvas(canvas, container);
     });
   }
 });
+function createCanvas(cId, vId) {
+  const canvas = document.getElementById(cId);
+  canvas.classList.add(vId);
+  const ctx = canvas.getContext('2d');
+  const video = document.getElementById(vId);
+
+  function loop() {
+    ctx.drawImage(video, 0, 0);
+    requestAnimationFrame(loop);
+  }
+  loop();
+}
 function getVideo(container, src) {
   let video = document.getElementById(container);
+  video.classList.add('hidden');
   if (Hls.isSupported()) {
     console.log('hls required');
     let hls = new Hls();
