@@ -13,39 +13,44 @@ function sortData(data, type) {
 function mergeEvents(events, ammount) {
   return events.concat(...events).splice(ammount);
 }
-// function createMetadata(data) {
-//   return {
-//     totalEvents: data.length,
-//   };
-// }
+async function fetchAndParseData() {
+  try {
+    let rawData = await getFile('./apiServer/data/events.json', 'utf8');
+    let parsedData = parseData(rawData);
+    return parsedData;
+  } catch (e) {
+    throw e;
+  }
+}
 function cutData(data, end) {
   return data.slice(undefined, end);
 }
 async function getEvents(type, limit) {
-  let rawData = await getFile('./apiServer/data/events.json', 'utf8');
-  let parsedData = parseData(rawData);
+  let data = await fetchAndParseData();
   if (type !== undefined && type !== 'all') {
-    // parsedData.metadata = createMetadata(parsedData.events);
-    parsedData.events = sortData(parsedData.events, type);
+    data.events = sortData(data.events, type);
     if (limit !== null) {
-      parsedData.events = cutData(parsedData.events, limit);
+      data.events = cutData(data.events, limit);
     }
-    return parsedData.events;
+    return data.events;
   } else if (type === 'all') {
-    return parsedData.events;
+    return data.events;
   } else {
     throw new Error(400);
   }
 }
 async function getEventsType() {
-  let rawData = await getFile('./apiServer/data/events.json', 'utf8');
-  let parsedData = parseData(rawData);
-  let eventTypes = parsedData.events.map((event) => {
-    return event.type;
-  });
-  return eventTypes.filter(function(item, pos) {
-    return eventTypes.indexOf(item) === pos;
-  });
+  try {
+    let data = await fetchAndParseData();
+    let eventTypes = data.events.map((event) => {
+      return event.type;
+    });
+    return eventTypes.filter(function(item, pos) {
+      return eventTypes.indexOf(item) === pos;
+    });
+  } catch (e) {
+    throw e;
+  }
 }
 module.exports.getEvents = getEvents;
 module.exports.getEventsType = getEventsType;
