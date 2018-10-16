@@ -19,24 +19,28 @@ async function fetchAndParseData() {
     let parsedData = parseData(rawData);
     return parsedData;
   } catch (e) {
-    throw e;
+    throw new Error(e);
   }
 }
 function cutData(data, end) {
   return data.slice(undefined, end);
 }
 async function getEvents(type, limit) {
-  let data = await fetchAndParseData();
-  if (type !== undefined && type !== 'all') {
-    data.events = sortData(data.events, type);
-    if (limit !== null) {
-      data.events = cutData(data.events, limit);
+  try {
+    let data = await fetchAndParseData();
+    if (type !== undefined && type !== 'all') {
+      data.events = sortData(data.events, type);
+      if (limit !== null) {
+        data.events = cutData(data.events, limit);
+      }
+      return data.events;
+    } else if (type === 'all') {
+      return data.events;
+    } else {
+      throw new Error(400);
     }
-    return data.events;
-  } else if (type === 'all') {
-    return data.events;
-  } else {
-    throw new Error(400);
+  } catch (e) {
+    throw new Error(e);
   }
 }
 async function getEventsType() {
@@ -49,7 +53,7 @@ async function getEventsType() {
       return eventTypes.indexOf(item) === pos;
     });
   } catch (e) {
-    throw e;
+    throw new Error(e);
   }
 }
 module.exports.getEvents = getEvents;
