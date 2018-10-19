@@ -9,7 +9,6 @@ import Music from './images/music.svg';
 import Fridge from './images/fridge.svg';
 import Battery from './images/battery.svg';
 import Kettle from './images/kettle.svg';
-console.log('hello there');
 
 window.addEventListener('load', () => {
   fetchEvents().then((events) => {
@@ -18,7 +17,7 @@ window.addEventListener('load', () => {
         createCard(element);
       });
     } else {
-      console.info('no events detected');
+      throw new Error('events not found');
     }
   });
 });
@@ -112,7 +111,6 @@ function createCard(e) {
     let time = clone.querySelector('.time');
     time.innerHTML = e.time;
     let cardGrid = document.getElementById('card-grid');
-    console.log(e);
     if (e.size === 's') {
       cloneCard.classList.add('card_s');
     }
