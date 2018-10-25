@@ -1,14 +1,14 @@
-require('./style.css');
-const Stats =  require('./images/stats.svg');
-const Key = require( './images/key.svg');
-const Robot = require( './images/robot-cleaner.svg');
-const Router = require( './images/router.svg');
-const Thermal = require( './images/thermal.svg');
-const Ac = require( './images/air-conditioner.svg');
-const Music = require( './images/music.svg');
-const Fridge = require( './images/fridge.svg');
-const Battery = require( './images/battery.svg');
-const Kettle = require( './images/kettle.svg');
+import Ac from './images/air-conditioner.svg';
+import Battery from './images/battery.svg';
+import Fridge from './images/fridge.svg';
+import Kettle from './images/kettle.svg';
+import Key from './images/key.svg';
+import Music from './images/music.svg';
+import Robot from './images/robot-cleaner.svg';
+import Router from './images/router.svg';
+import Stats from './images/stats.svg';
+import Thermal from './images/thermal.svg';
+import './style.css';
 
 window.addEventListener('load', () => {
   fetchEvents().then((events) => {
@@ -22,10 +22,10 @@ window.addEventListener('load', () => {
   });
 });
 async function fetchEvents(type?: string, limit?: number) {
-  let myHeaders = new Headers();
-  let endpoint:string = 'http://localhost:8000/api/events';
+  const myHeaders = new Headers();
+  const endpoint: string = 'http://localhost:8000/api/events';
   myHeaders.append('x-requested-with', 'XMLHttpRequest');
-  let params = new URLSearchParams();
+  const params = new URLSearchParams();
   if (type) {
     params.append('type', type);
   }
@@ -33,37 +33,35 @@ async function fetchEvents(type?: string, limit?: number) {
     params.append('limit', limit.toString());
   }
   try {
-    let result = await fetch(endpoint,
+    const result = await fetch(endpoint,
         {
-          method: 'POST',
           body: params,
           headers: myHeaders,
+          method: 'POST',
         });
     if (result.status !== 200) {
       throw new Error(`failed with code ${result.status}`);
     } else {
-      let data = await result.json();
+      const data = await result.json();
       return data;
     }
   } catch (e) {
-    console.log(e);
     throw e;
   }
 }
-function createCard(e:object) {
-  console.log(e);
+function createCard(e: object) {
   // Test to see if the browser supports the HTML template element by checking
 // for the presence of the template element's content attribute.
   if ('content' in document.createElement('template')) {
-    let card = (<HTMLInputElement>document.getElementById('card-tempo'));
-    let clone = document.constNode(card.content, true);
+    const card = ( document.getElementById('card-tempo') as HTMLInputElement);
+    const clone = document.constNode(card.content, true);
 
-    let cloneCard = clone.querySelector('.card');
+    const cloneCard = clone.querySelector('.card');
     //  title
-    let title = clone.querySelector('.title').
+    const title = clone.querySelector('.title').
     title.innerHTML = e.title;
     // icon
-    let icon = clone.querySelector('.icon');
+    const icon = clone.querySelector('.icon');
     switch (e.icon) {
       case 'stats':
         icon.src = Stats;
@@ -99,19 +97,19 @@ function createCard(e:object) {
         icon.src = '';
     }
     //  description
-    let desc = clone.querySelector('.description');
+    const desc = clone.querySelector('.description');
     if (e.description === null) {
       desc.remove();
     } else {
       desc.innerHTML = e.description;
     }
     //  source
-    let source = clone.querySelector('.source');
+    const source = clone.querySelector('.source');
     source.innerHTML = e.source;
     //  time
-    let time = clone.querySelector('.time');
+    const time = clone.querySelector('.time');
     time.innerHTML = e.time;
-    let cardGrid = document.getElementById('card-grid');
+    const cardGrid = document.getElementById('card-grid');
     if (e.size === 's') {
       cloneCard.classList.add('card_s');
     }
