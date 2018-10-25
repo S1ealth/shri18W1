@@ -11,7 +11,7 @@ const Battery = require( './images/battery.svg');
 const Kettle = require( './images/kettle.svg');
 
 window.addEventListener('load', () => {
-  fetchEvents().then((events:object) => {
+  fetchEvents().then((events) => {
     if (events.hasOwnProperty('events')) {
       events.events.forEach((element: object) => {
         createCard(element);
@@ -56,7 +56,7 @@ function createCard(e:object) {
 // for the presence of the template element's content attribute.
   if ('content' in document.createElement('template')) {
     let card = (<HTMLInputElement>document.getElementById('card-tempo'));
-    let clone = (<HTMLInputElement>document.constNode(card.content, true));
+    let clone = document.constNode(card.content, true);
 
     let cloneCard = clone.querySelector('.card');
     //  title
