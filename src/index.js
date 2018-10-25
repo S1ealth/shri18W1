@@ -1,5 +1,4 @@
 import './style.css';
-import Events from './events.json';
 import Stats from './images/stats.svg';
 import Key from './images/key.svg';
 import Robot from './images/robot-cleaner.svg';
@@ -10,14 +9,47 @@ import Music from './images/music.svg';
 import Fridge from './images/fridge.svg';
 import Battery from './images/battery.svg';
 import Kettle from './images/kettle.svg';
-console.log('hello there');
-console.log(Events.events);
 
 window.addEventListener('load', () => {
-  Events.events.forEach((element) => {
-    createCard(element);
+  fetchEvents().then((events) => {
+    if (events.hasOwnProperty('events')) {
+      events.events.forEach((element) => {
+        createCard(element);
+      });
+    } else {
+      throw new Error('events not found');
+    }
   });
 });
+async function fetchEvents(type, limit) {
+  let myHeaders = new Headers();
+  let endpoint = 'http://localhost:8000/api/events';
+  myHeaders.append('x-requested-with', 'XMLHttpRequest');
+  let params = new URLSearchParams();
+  if (type) {
+    params.append('type', type);
+  }
+  if (limit) {
+    params.append('limit', limit);
+  }
+  try {
+    let result = await fetch(endpoint,
+        {
+          method: 'POST',
+          body: params,
+          headers: myHeaders,
+        });
+    if (result.status !== 200) {
+      throw new Error(`failed with code ${result.status}`);
+    } else {
+      let data = await result.json();
+      return data;
+    }
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+}
 function createCard(e) {
   // Test to see if the browser supports the HTML template element by checking
 // for the presence of the template element's content attribute.
@@ -79,7 +111,6 @@ function createCard(e) {
     let time = clone.querySelector('.time');
     time.innerHTML = e.time;
     let cardGrid = document.getElementById('card-grid');
-    console.log(e);
     if (e.size === 's') {
       cloneCard.classList.add('card_s');
     }

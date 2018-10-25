@@ -1,24 +1,28 @@
 {
   "name": "shrihomework1",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "SHRI homework projects",
   "private": true,
   "author": "Sergey 'Biribiri' Fokin",
   "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "server": "nodemon ./apiServer/server.js"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",
     "eslint": "^5.6.1",
     "eslint-config-google": "^0.10.0",
     "file-loader": "^2.0.0",
+    "nodemon": "^1.18.4",
     "style-loader": "^0.23.0",
     "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "hls.js": "^0.11.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
