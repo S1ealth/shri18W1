@@ -1,19 +1,19 @@
-import './style.css';
-import Stats from './images/stats.svg';
-import Key from './images/key.svg';
-import Robot from './images/robot-cleaner.svg';
-import Router from './images/router.svg';
-import Thermal from './images/thermal.svg';
-import Ac from './images/air-conditioner.svg';
-import Music from './images/music.svg';
-import Fridge from './images/fridge.svg';
-import Battery from './images/battery.svg';
-import Kettle from './images/kettle.svg';
+require('./style.css');
+const Stats =  require('./images/stats.svg');
+const Key = require( './images/key.svg');
+const Robot = require( './images/robot-cleaner.svg');
+const Router = require( './images/router.svg');
+const Thermal = require( './images/thermal.svg');
+const Ac = require( './images/air-conditioner.svg');
+const Music = require( './images/music.svg');
+const Fridge = require( './images/fridge.svg');
+const Battery = require( './images/battery.svg');
+const Kettle = require( './images/kettle.svg');
 
 window.addEventListener('load', () => {
-  fetchEvents().then((events) => {
+  fetchEvents().then((events:object) => {
     if (events.hasOwnProperty('events')) {
-      events.events.forEach((element) => {
+      events.events.forEach((element: object) => {
         createCard(element);
       });
     } else {
@@ -21,16 +21,16 @@ window.addEventListener('load', () => {
     }
   });
 });
-async function fetchEvents(type, limit) {
+async function fetchEvents(type?: string, limit?: number) {
   let myHeaders = new Headers();
-  let endpoint = 'http://localhost:8000/api/events';
+  let endpoint:string = 'http://localhost:8000/api/events';
   myHeaders.append('x-requested-with', 'XMLHttpRequest');
   let params = new URLSearchParams();
   if (type) {
     params.append('type', type);
   }
   if (limit) {
-    params.append('limit', limit);
+    params.append('limit', limit.toString());
   }
   try {
     let result = await fetch(endpoint,
@@ -50,16 +50,17 @@ async function fetchEvents(type, limit) {
     throw e;
   }
 }
-function createCard(e) {
+function createCard(e:object) {
+  console.log(e);
   // Test to see if the browser supports the HTML template element by checking
 // for the presence of the template element's content attribute.
   if ('content' in document.createElement('template')) {
-    let card = document.getElementById('card-tempo');
-    let clone = document.importNode(card.content, true);
+    let card = (<HTMLInputElement>document.getElementById('card-tempo'));
+    let clone = (<HTMLInputElement>document.constNode(card.content, true));
 
     let cloneCard = clone.querySelector('.card');
     //  title
-    let title = clone.querySelector('.title');
+    let title = clone.querySelector('.title').
     title.innerHTML = e.title;
     // icon
     let icon = clone.querySelector('.icon');
