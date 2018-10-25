@@ -1,0 +1,41 @@
+<!doctype html>
+  <html>
+   <head>
+      <meta name="robots" content="noindex">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>Yandex House Surveillance</title>
+   </head>
+   <body class="wraper">
+     <header>
+        <img  class="logo" src="../yandexHouse2x.png">
+          <a href="/">События</a>
+          <a href="#">Сводка</a>
+          <a href="#">Устройства</a>
+          <a href="#">Сценарии</a>
+          <a href="#" class="bold">Видеонаблюдение</a>
+     </header>
+     <section class="surveillance-grid center">
+       <canvas id="canv-1" class="video"></canvas>
+       <canvas id="canv-2" class="video"></canvas>
+       <canvas id="canv-3" class="video"></canvas>
+       <canvas id="canv-4" class="video"></canvas>
+       <video id="camera-1" class="video" muted poster="../yandexHouse2x.png"></video>
+       <video id="camera-2" class="video" muted poster="../yandexHouse2x.png"></video>
+       <video id="camera-3" class="video" muted poster="../yandexHouse2x.png"></video>
+       <video id="camera-4" class="video" muted poster="../yandexHouse2x.png"></video>
+     </section>
+     <template id='canvas-layout'>
+       
+       <canvas></canvas>
+     </template>
+    <footer>
+      <a href='#'>Помощь</a>
+      <a href='#'>Обратная связь</a>
+      <a href='#'>Разработчикам</a>
+      <a href='#'>Условия использования</a>
+      <a href='#'>© 2001–2017  ООО «Яндекс»</a>
+    </footer>
+    <script src='../surv.bundle.js'></script>
+   </body>
+  </html>

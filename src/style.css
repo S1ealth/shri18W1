@@ -26,6 +26,7 @@ header, footer {
     color: #333333;
     line-height: 20px;
   }
+
 .description, .title {
   font-family: Helvetica,sans-serif;
 }
@@ -99,3 +100,48 @@ header, footer {
 .logo {
   max-height: 27px;
 }
+/* ~Surveillance block
+  disclaimer: да, тянуть 1 css файл со всеми стилями это неоч (особенно когда он раздуется), но тут мы на это не будем смотреть.
+ */
+ .surveillance-grid {
+   display: grid;
+   grid-template:
+   'c1 c2' 1fr
+   'c3 c4' 1fr
+   /1fr 1fr
+   ;
+   grid-gap: 20px;
+ }
+ @media screen and (max-width: 320px) {
+  .surveillance-grid {
+    grid-template:
+    'c1' 300px
+    'c2' 300px
+    'c3' 300px
+    'c4' 300px
+    ;
+  }
+ }
+ .center {
+  justify-items: center;
+  align-items: center;
+ }
+ .video {
+   max-width: 480px;
+   max-height: 360px;
+ }
+ .camera-1 {
+   grid-area: c1;
+ }
+ .camera-2 {
+   grid-area: c2;
+ }
+ .camera-3 {
+   grid-area: c3;
+ }
+ .camera-4 {
+   grid-area: c4;
+ }
+ .hidden {
+   display: none;
+ }
