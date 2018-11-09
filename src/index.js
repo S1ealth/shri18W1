@@ -9,7 +9,7 @@ import Music from './images/music.svg';
 import Fridge from './images/fridge.svg';
 import Battery from './images/battery.svg';
 import Kettle from './images/kettle.svg';
-
+import Cleaner from './images/Richdata Graph Alternative.jpg';
 window.addEventListener('load', () => {
   fetchEvents().then((events) => {
     if (events.hasOwnProperty('events')) {
@@ -120,6 +120,12 @@ function createCard(e) {
     if (e.type === 'critical') {
       // cloneCard.classList.add('critical');
       cloneCard.querySelector('.header').classList.add('critical');
+    }
+    if (e.data) {
+      if (e.data.image === 'get_it_from_mocks_:3.jpg') {
+        let image = cloneCard.querySelector('.camera-footage');
+        image.src = Cleaner;
+      }
     }
     cardGrid.appendChild(clone);
   } else {
