@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     surv: './src/surv.js',
+    main: './src/main.js',
   },
   devServer: {
     contentBase: './dist',
