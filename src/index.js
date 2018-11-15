@@ -13,10 +13,17 @@ import Cleaner from './images/Richdata Graph Alternative.jpg';
 window.addEventListener('load', () => {
   fetchEvents().then((events) => {
     if (events.hasOwnProperty('events')) {
-      events.events.forEach((element) => {
-        createCard(element);
+      let cards = events.events.map((event) => {
+        return createCard(event);
       });
-      addSensor();
+      Promise.all(cards)
+          .then(() => {
+            console.log('cards created');
+            if (document.querySelector('.camera-footage')) {
+              console.log(document.querySelector('.camera-footage'));
+              addSensor();
+            }
+          });
     } else {
       throw new Error('events not found');
     }
@@ -51,9 +58,9 @@ async function fetchEvents(type, limit) {
     throw e;
   }
 }
-function createCard(e) {
+async function createCard(e) {
   // Test to see if the browser supports the HTML template element by checking
-// for the presence of the template element's content attribute.
+  // for the presence of the template element's content attribute.
   if ('content' in document.createElement('template')) {
     let card = document.getElementById('card-tempo');
     let clone = document.importNode(card.content, true);
@@ -122,20 +129,26 @@ function createCard(e) {
       // cloneCard.classList.add('critical');
       cloneCard.querySelector('.header').classList.add('critical');
     }
-    if (e.data) {
+    let image = cloneCard.querySelector('.camera');
+    let imageContainer = cloneCard.querySelector('.camera-footage');
+    if (e.hasOwnProperty('data')) {
       if (e.data.image === 'get_it_from_mocks_:3.jpg') {
-        let image = cloneCard.querySelector('.camera-footage');
         image.src = Cleaner;
+      } else {
+        imageContainer.remove();
       }
+    } else {
+      imageContainer.remove();
     }
     cardGrid.appendChild(clone);
+    return;
   } else {
     // Find another way to add the rows to the table because
-  // the HTML template element is not supported.
+    // the HTML template element is not supported.
   }
 }
 function addSensor() {
-  const image = document.querySelector('.camera-footage');
+  const image = document.querySelector('.camera');
 
   // Сюда будем записывать события
   const currentPointerEvents = {};
@@ -152,12 +165,13 @@ function addSensor() {
     brightness: 1,
     brightnessMax: 4,
   };
-
+  console.log(image.src);
   // Описание текущего жеста
   let gesture = null;
 
   // Запрещает таскать картинку мышкой
   image.addEventListener('dragstart', (event) => {
+    console.log(event);
     event.preventDefault();
   });
 
@@ -182,17 +196,6 @@ function addSensor() {
     const r = Math.atan2(x2 - x1, y2 - y1);
     return 360 - (180 + Math.round(r * 180 / Math.PI));
   };
-
-  const feedbackNodes = {
-    left: document.querySelector('.feedback__unit_left'),
-    zoom: document.querySelector('.feedback__unit_zoom'),
-    brightness: document.querySelector('.feedback__unit_brightness'),
-  };
-
-  const setFeedback = (name, value) => {
-    feedbackNodes[name].innerText = Math.round(value * 100) / 100;
-  };
-
   const setLeft = (dx) => {
     const {leftMin, leftMax} = imageState;
 
@@ -203,8 +206,6 @@ function addSensor() {
       imageState.left = leftMax;
     }
     image.style.left = `${imageState.left}px`;
-
-    setFeedback('left', -imageState.left);
   };
 
   image.addEventListener('pointermove', (event) => {
@@ -238,18 +239,18 @@ function addSensor() {
       const diff = distance - gesture.startDistance;
       const angleDiff = angle - gesture.startAngle;
 
-      if (!gesture.type) {
-        if (Math.abs(diff) < 32 && Math.abs(angleDiff) < 8) {
-          log({'!': 'ignore', diff, angleDiff});
-          return;
-        } else if (Math.abs(diff) > 32) {
-          log({'!': 'detected zoom', diff, angleDiff});
-          gesture.type = 'zoom';
-        } else {
-          log({'!': 'detected rotate', diff, angleDiff});
-          gesture.type = 'rotate';
-        }
-      }
+      // if (!gesture.type) {
+      //   if (Math.abs(diff) < 32 && Math.abs(angleDiff) < 8) {
+      //     log({'!': 'ignore', diff, angleDiff});
+      //     return;
+      //   } else if (Math.abs(diff) > 32) {
+      //     log({'!': 'detected zoom', diff, angleDiff});
+      //     gesture.type = 'zoom';
+      //   } else {
+      //     log({'!': 'detected rotate', diff, angleDiff});
+      //     gesture.type = 'rotate';
+      //   }
+      // }
 
       if (gesture.type === 'zoom') {
         const {zoomMin, zoomMax} = imageState;
@@ -262,7 +263,6 @@ function addSensor() {
 
         imageState.zoom = zoom;
         image.style.height = `${zoom}%`;
-        setFeedback('zoom', zoom);
       }
 
       if (gesture.type === 'rotate') {
@@ -286,7 +286,6 @@ function addSensor() {
 
         imageState.brightness = brightness;
         image.style.filter = `brightness(${brightness})`;
-        setFeedback('brightness', brightness);
       }
     }
   });
