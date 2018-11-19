@@ -13,9 +13,17 @@ import Cleaner from './images/Richdata Graph Alternative.jpg';
 window.addEventListener('load', () => {
   fetchEvents().then((events) => {
     if (events.hasOwnProperty('events')) {
-      events.events.forEach((element) => {
-        createCard(element);
+      let cards = events.events.map((event) => {
+        return createCard(event);
       });
+      Promise.all(cards)
+          .then(() => {
+            console.log('cards created');
+            if (document.querySelector('.camera-footage')) {
+              console.log(document.querySelector('.camera-footage'));
+              addSensor();
+            }
+          });
     } else {
       throw new Error('events not found');
     }
@@ -50,9 +58,9 @@ async function fetchEvents(type, limit) {
     throw e;
   }
 }
-function createCard(e) {
+async function createCard(e) {
   // Test to see if the browser supports the HTML template element by checking
-// for the presence of the template element's content attribute.
+  // for the presence of the template element's content attribute.
   if ('content' in document.createElement('template')) {
     let card = document.getElementById('card-tempo');
     let clone = document.importNode(card.content, true);
@@ -121,15 +129,174 @@ function createCard(e) {
       // cloneCard.classList.add('critical');
       cloneCard.querySelector('.header').classList.add('critical');
     }
-    if (e.data) {
+    let image = cloneCard.querySelector('.camera');
+    let imageContainer = cloneCard.querySelector('.camera-footage');
+    if (e.hasOwnProperty('data')) {
       if (e.data.image === 'get_it_from_mocks_:3.jpg') {
-        let image = cloneCard.querySelector('.camera-footage');
         image.src = Cleaner;
+      } else {
+        imageContainer.remove();
       }
+    } else {
+      imageContainer.remove();
     }
     cardGrid.appendChild(clone);
+    return;
   } else {
     // Find another way to add the rows to the table because
-  // the HTML template element is not supported.
+    // the HTML template element is not supported.
   }
 }
+function addSensor() {
+  const image = document.querySelector('.camera');
+
+  // Сюда будем записывать события
+  const currentPointerEvents = {};
+
+  // Состояние нашей картинки
+  const imageState = {
+    leftMin: -(image.offsetWidth - image.parentNode.offsetWidth),
+    left: 0,
+    leftMax: 0,
+    zoomMin: 100,
+    zoom: 100,
+    zoomMax: 300,
+    brightnessMin: .2,
+    brightness: 1,
+    brightnessMax: 4,
+  };
+  console.log(image.src);
+  // Описание текущего жеста
+  let gesture = null;
+
+  // Запрещает таскать картинку мышкой
+  image.addEventListener('dragstart', (event) => {
+    console.log(event);
+    event.preventDefault();
+  });
+
+  image.addEventListener('pointerdown', (event) => {
+    currentPointerEvents[event.pointerId] = event;
+    if (!gesture) {
+      gesture = {
+        type: 'move',
+      };
+    }
+  });
+
+  const getDistance = (e1, e2) => {
+    const {clientX: x1, clientY: y1} = e1;
+    const {clientX: x2, clientY: y2} = e2;
+    return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+  };
+
+  const getAngle = (e1, e2) => {
+    const {clientX: x1, clientY: y1} = e1;
+    const {clientX: x2, clientY: y2} = e2;
+    const r = Math.atan2(x2 - x1, y2 - y1);
+    return 360 - (180 + Math.round(r * 180 / Math.PI));
+  };
+  const setLeft = (dx) => {
+    const {leftMin, leftMax} = imageState;
+
+    imageState.left += dx;
+    if (imageState.left < leftMin) {
+      imageState.left = leftMin;
+    } else if (imageState.left > leftMax) {
+      imageState.left = leftMax;
+    }
+    image.style.left = `${imageState.left}px`;
+  };
+
+  image.addEventListener('pointermove', (event) => {
+    const pointersCount = Object.keys(currentPointerEvents).length;
+
+    if (pointersCount === 0 || !gesture) {
+      return;
+    }
+
+    if (pointersCount === 1 && gesture.type === 'move' && !currentPointerEvents.fake) {
+      const previousEvent = currentPointerEvents[event.pointerId];
+      const dx = event.clientX - previousEvent.clientX;
+      setLeft(dx);
+      currentPointerEvents[event.pointerId] = event;
+    } else if (pointersCount === 2) {
+      currentPointerEvents[event.pointerId] = event;
+      const events = Object.values(currentPointerEvents);
+      const distance = getDistance(events[0], events[1]);
+      const angle = getAngle(events[0], events[1]);
+
+      if (!gesture.startDistance) {
+        gesture.startZoom = imageState.zoom;
+        gesture.startDistance = distance;
+
+        gesture.startBrightness = imageState.brightness;
+        gesture.startAngle = angle;
+        gesture.angleDiff = 0;
+        gesture.type = null;
+      }
+
+      const diff = distance - gesture.startDistance;
+      const angleDiff = angle - gesture.startAngle;
+
+      // if (!gesture.type) {
+      //   if (Math.abs(diff) < 32 && Math.abs(angleDiff) < 8) {
+      //     log({'!': 'ignore', diff, angleDiff});
+      //     return;
+      //   } else if (Math.abs(diff) > 32) {
+      //     log({'!': 'detected zoom', diff, angleDiff});
+      //     gesture.type = 'zoom';
+      //   } else {
+      //     log({'!': 'detected rotate', diff, angleDiff});
+      //     gesture.type = 'rotate';
+      //   }
+      // }
+
+      if (gesture.type === 'zoom') {
+        const {zoomMin, zoomMax} = imageState;
+        let zoom = gesture.startZoom + diff;
+        if (diff < 0) {
+          zoom = Math.max(zoom, zoomMin);
+        } else {
+          zoom = Math.min(zoom, zoomMax);
+        }
+
+        imageState.zoom = zoom;
+        image.style.height = `${zoom}%`;
+      }
+
+      if (gesture.type === 'rotate') {
+        const {brightnessMin, brightnessMax} = imageState;
+
+        if (Math.abs(angleDiff - gesture.angleDiff) > 300) {
+          gesture.startBrightness = imageState.brightness;
+          gesture.startAngle = angle;
+          gesture.angleDiff = 0;
+          return;
+        }
+
+        gesture.angleDiff = angleDiff;
+
+        let brightness = gesture.startBrightness + angleDiff / 50;
+        if (angleDiff < 0) {
+          brightness = Math.max(brightness, brightnessMin);
+        } else {
+          brightness = Math.min(brightness, brightnessMax);
+        }
+
+        imageState.brightness = brightness;
+        image.style.filter = `brightness(${brightness})`;
+      }
+    }
+  });
+
+  const onPointerUp = (event) => {
+    gesture = null;
+    delete currentPointerEvents[event.pointerId];
+  };
+
+  image.addEventListener('pointerup', onPointerUp);
+  image.addEventListener('pointercancel', onPointerUp);
+  image.addEventListener('pointerleave', onPointerUp);
+}
+

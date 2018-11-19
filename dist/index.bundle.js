@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var escape = __webpack_require__(/*! ../node_modules/css-loader/lib/url/escape.js */ \"./node_modules/css-loader/lib/url/escape.js\");\nexports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"html {\\r\\n  margin: 0;\\r\\n  padding: 0;\\r\\n  font-family: Arial, Helvetica, sans-serif;\\r\\n  font-size: 14px;\\r\\n}\\r\\n.card-grid {\\r\\n  display: grid;\\r\\n  grid-template-columns: 50% 50%;\\r\\n  grid-template-rows: repeat(auto-fill,50%);\\r\\n  grid-auto-flow: dense;\\r\\n  grid-gap: 16px;\\r\\n}\\r\\nheader, footer {\\r\\n  display: grid;\\r\\n  grid-template-columns: repeat(6,1fr);\\r\\n  grid-template-rows: 100%;\\r\\n  }\\r\\n  header a , footer a {\\r\\n    opacity: 0.6;\\r\\n    font-size: 16px;\\r\\n    color: #333333;\\r\\n    line-height: 20px;\\r\\n  }\\r\\n  \\r\\n.description, .title {\\r\\n  font-family: Helvetica,sans-serif;\\r\\n}\\r\\n.bold {\\r\\n  font-weight: bold;\\r\\n}\\r\\n/* card layout */\\r\\n.card {\\r\\n  display: grid;\\r\\n  grid-template-columns: repeat(auto-fill, 100%);\\r\\n  grid-template-rows: repeat(auto-fill,minmax(100px,120px));\\r\\n  color: #333333;\\r\\n  align-items: center;\\r\\n}\\r\\n.critical {\\r\\n  background: #DB5341;\\r\\n  border-radius: 20px 20px 0 0;\\r\\n}\\r\\n.info {\\r\\n  background: #FAFAFA;\\r\\n  border-radius: 20px;\\r\\n}\\r\\n.header {\\r\\n  display: grid;\\r\\n  grid-template-rows: 100% 100%;\\r\\n  grid-template-columns: 50% 50%;\\r\\n  padding: 16px;\\r\\n  align-items: center;\\r\\n}\\r\\n.body {\\r\\n  padding: 16px;\\r\\n}\\r\\n.title {\\r\\n  grid-area: 1/2/span 1/span 1\\r\\n}\\r\\n.icon {\\r\\n  grid-area: 1/1/span 1/span 1;\\r\\n}\\r\\n.source {\\r\\n  grid-area: 2/1/span 1/span 1;\\r\\n}\\r\\n.time {\\r\\n  grid-area: 2/2/span 1/span 1;\\r\\n}\\r\\n.description {\\r\\n  grid-area: 3/1/span 1/span 2\\r\\n}\\r\\n  /* mobile adaptation */\\r\\n@media screen and (max-width: 320px) {\\r\\n  header, footer {\\r\\n    display: grid;\\r\\n    grid-template: 100%/ 50% 50%\\r\\n    }\\r\\n  .card-grid {\\r\\n    grid-template-columns: 100%;\\r\\n    grid-template-rows: auto;\\r\\n  }\\r\\n  .lenta {\\r\\n    font-size: 24px;\\r\\n  }\\r\\n  .nav-menu {\\r\\n    background-image: url(\" + escape(__webpack_require__(/*! ../src/icon_list_m@2x.png */ \"./src/icon_list_m@2x.png\")) + \");\\r\\n    background-repeat: no-repeat;\\r\\n    width: 28px;\\r\\n    height: 32px;\\r\\n  }\\r\\n  .card_s , .card_m , .card_l {\\r\\n    grid-column: span 1;\\r\\n  }\\r\\n}\\r\\n.logo {\\r\\n  max-height: 27px;\\r\\n}\\r\\n/* ~Surveillance block\\r\\n  disclaimer: да, тянуть 1 css файл со всеми стилями это неоч (особенно когда он раздуется), но тут мы на это не будем смотреть.\\r\\n */\\r\\n .surveillance-grid {\\r\\n   display: grid;\\r\\n   grid-template: repeat(4,100px)/repeat(4,100px);\\r\\n }\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/style.css?./node_modules/css-loader");
+eval("var escape = __webpack_require__(/*! ../node_modules/css-loader/lib/url/escape.js */ \"./node_modules/css-loader/lib/url/escape.js\");\nexports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"html {\\r\\n  margin: 0;\\r\\n  padding: 0;\\r\\n  font-family: Arial, Helvetica, sans-serif;\\r\\n  font-size: 14px;\\r\\n}\\r\\n.wraper {\\r\\n  display: grid;\\r\\n  grid-template-rows: auto 1fr auto;\\r\\n  min-height: 100vh;\\r\\n}\\r\\n.card-grid {\\r\\n  display: grid;\\r\\n  grid-template-columns: 50% 50%;\\r\\n  grid-template-rows: repeat(auto-fill,50%);\\r\\n  grid-auto-flow: dense;\\r\\n  grid-gap: 16px;\\r\\n}\\r\\nheader, footer {\\r\\n  display: grid;\\r\\n  grid-template-columns: repeat(6,1fr);\\r\\n  }\\r\\n  header a , footer a {\\r\\n    opacity: 0.6;\\r\\n    font-size: 16px;\\r\\n    color: #333333;\\r\\n    line-height: 20px;\\r\\n  }\\r\\n\\r\\n.description, .title {\\r\\n  font-family: Helvetica,sans-serif;\\r\\n}\\r\\n.bold {\\r\\n  font-weight: bold;\\r\\n}\\r\\n/* card layout */\\r\\n.card {\\r\\n  display: grid;\\r\\n  grid-template-columns: repeat(auto-fill, 100%);\\r\\n  grid-template-rows: repeat(auto-fill,minmax(100px,120px));\\r\\n  color: #333333;\\r\\n  align-items: center;\\r\\n}\\r\\n.critical {\\r\\n  background: #DB5341;\\r\\n  border-radius: 20px 20px 0 0;\\r\\n}\\r\\n.info {\\r\\n  background: #FAFAFA;\\r\\n  border-radius: 20px;\\r\\n}\\r\\n.header {\\r\\n  display: grid;\\r\\n  grid-template-rows: 100% 100%;\\r\\n  grid-template-columns: 50% 50%;\\r\\n  padding: 16px;\\r\\n  align-items: center;\\r\\n}\\r\\n.body {\\r\\n  padding: 16px;\\r\\n}\\r\\n.title {\\r\\n  grid-area: 1/2/span 1/span 1\\r\\n}\\r\\n.icon {\\r\\n  grid-area: 1/1/span 1/span 1;\\r\\n}\\r\\n.source {\\r\\n  grid-area: 2/1/span 1/span 1;\\r\\n}\\r\\n.time {\\r\\n  grid-area: 2/2/span 1/span 1;\\r\\n}\\r\\n.description {\\r\\n  grid-area: 3/1/span 1/span 2\\r\\n}\\r\\n.camera-footage {\\r\\n  max-width: 635px;\\r\\n}\\r\\n  /* mobile adaptation */\\r\\n@media screen and (max-width: 320px) {\\r\\n  header, footer {\\r\\n    display: grid;\\r\\n    grid-template: 100%/ 50% 50%\\r\\n    }\\r\\n  .card-grid {\\r\\n    grid-template-columns: 100%;\\r\\n    grid-template-rows: auto;\\r\\n  }\\r\\n  .lenta {\\r\\n    font-size: 24px;\\r\\n  }\\r\\n  .nav-menu {\\r\\n    background-image: url(\" + escape(__webpack_require__(/*! ../src/images/icon_list_m@2x.png */ \"./src/images/icon_list_m@2x.png\")) + \");\\r\\n    background-repeat: no-repeat;\\r\\n    width: 28px;\\r\\n    height: 32px;\\r\\n  }\\r\\n  .card_s , .card_m , .card_l {\\r\\n    grid-column: span 1;\\r\\n  }\\r\\n}\\r\\n.logo {\\r\\n  max-height: 27px;\\r\\n}\\r\\n/* ~Surveillance block\\r\\n  disclaimer: да, тянуть 1 css файл со всеми стилями это неоч (особенно когда он раздуется), но тут мы на это не будем смотреть.\\r\\n */\\r\\n .surveillance-grid {\\r\\n   display: grid;\\r\\n   grid-template:\\r\\n   'c1 c2' 1fr\\r\\n   'c3 c4' 1fr\\r\\n   /1fr 1fr\\r\\n   ;\\r\\n   grid-gap: 20px;\\r\\n }\\r\\n @media screen and (max-width: 320px) {\\r\\n  .surveillance-grid {\\r\\n    grid-template:\\r\\n    'c1' 300px\\r\\n    'c2' 300px\\r\\n    'c3' 300px\\r\\n    'c4' 300px\\r\\n    ;\\r\\n  }\\r\\n }\\r\\n .center {\\r\\n  justify-items: center;\\r\\n  align-items: center;\\r\\n }\\r\\n .video {\\r\\n   max-width: 480px;\\r\\n   max-height: 360px;\\r\\n }\\r\\n .camera-1 {\\r\\n   grid-area: c1;\\r\\n }\\r\\n .camera-2 {\\r\\n   grid-area: c2;\\r\\n }\\r\\n .camera-3 {\\r\\n   grid-area: c3;\\r\\n }\\r\\n .camera-4 {\\r\\n   grid-area: c4;\\r\\n }\\r\\n .hidden {\\r\\n   display: none;\\r\\n }\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/style.css?./node_modules/css-loader");
 
 /***/ }),
 
@@ -141,58 +141,135 @@ eval("\n/**\n * When source maps are enabled, `style-loader` uses a link element
 
 /***/ }),
 
-/***/ "./src/air-conditioner.svg":
-/*!*********************************!*\
-  !*** ./src/air-conditioner.svg ***!
-  \*********************************/
+/***/ "./src/images/Richdata Graph Alternative.jpg":
+/*!***************************************************!*\
+  !*** ./src/images/Richdata Graph Alternative.jpg ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"57231c48dee1545f0cafa664cc58755f.svg\";\n\n//# sourceURL=webpack:///./src/air-conditioner.svg?");
+eval("module.exports = __webpack_require__.p + \"8b16c35932c83979d71d6efee9b71564.jpg\";\n\n//# sourceURL=webpack:///./src/images/Richdata_Graph_Alternative.jpg?");
 
 /***/ }),
 
-/***/ "./src/battery.svg":
-/*!*************************!*\
-  !*** ./src/battery.svg ***!
-  \*************************/
+/***/ "./src/images/air-conditioner.svg":
+/*!****************************************!*\
+  !*** ./src/images/air-conditioner.svg ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"b975a1eab1df3014bb0e6f662d0c2c7f.svg\";\n\n//# sourceURL=webpack:///./src/battery.svg?");
+eval("module.exports = __webpack_require__.p + \"57231c48dee1545f0cafa664cc58755f.svg\";\n\n//# sourceURL=webpack:///./src/images/air-conditioner.svg?");
 
 /***/ }),
 
-/***/ "./src/events.json":
-/*!*************************!*\
-  !*** ./src/events.json ***!
-  \*************************/
-/*! exports provided: events, default */
-/***/ (function(module) {
-
-eval("module.exports = {\"events\":[{\"type\":\"info\",\"title\":\"Еженедельный отчет по расходам ресурсов\",\"source\":\"Сенсоры потребления\",\"time\":\"19:00, Сегодня\",\"description\":\"Так держать! За последнюю неделю вы потратили на 10% меньше ресурсов, чем неделей ранее.\",\"icon\":\"stats\",\"data\":{\"type\":\"graph\",\"values\":[{\"electricity\":[[\"1536883200\",115],[\"1536969600\",117],[\"1537056000\",117.2],[\"1537142400\",118],[\"1537228800\",120],[\"1537315200\",123],[\"1537401600\",129]]},{\"water\":[[\"1536883200\",40],[\"1536969600\",40.2],[\"1537056000\",40.5],[\"1537142400\",41],[\"1537228800\",41.4],[\"1537315200\",41.9],[\"1537401600\",42.6]]},{\"gas\":[[\"1536883200\",13],[\"1536969600\",13.2],[\"1537056000\",13.5],[\"1537142400\",13.7],[\"1537228800\",14],[\"1537315200\",14.2],[\"1537401600\",14.5]]}]},\"size\":\"l\"},{\"type\":\"info\",\"title\":\"Дверь открыта\",\"source\":\"Сенсор входной двери\",\"time\":\"18:50, Сегодня\",\"description\":null,\"icon\":\"key\",\"size\":\"s\"},{\"type\":\"info\",\"title\":\"Уборка закончена\",\"source\":\"Пылесос\",\"time\":\"18:45, Сегодня\",\"description\":null,\"icon\":\"robot-cleaner\",\"size\":\"s\"},{\"type\":\"info\",\"title\":\"Новый пользователь\",\"source\":\"Роутер\",\"time\":\"18:45, Сегодня\",\"description\":null,\"icon\":\"router\",\"size\":\"s\"},{\"type\":\"info\",\"title\":\"Изменен климатический режим\",\"source\":\"Сенсор микроклимата\",\"time\":\"18:30, Сегодня\",\"description\":\"Установлен климатический режим «Фиджи»\",\"icon\":\"thermal\",\"size\":\"m\",\"data\":{\"temperature\":24,\"humidity\":80}},{\"type\":\"critical\",\"title\":\"Невозможно включить кондиционер\",\"source\":\"Кондиционер\",\"time\":\"18:21, Сегодня\",\"description\":\"В комнате открыто окно, закройте его и повторите попытку\",\"icon\":\"ac\",\"size\":\"m\"},{\"type\":\"info\",\"title\":\"Музыка включена\",\"source\":\"Яндекс.Станция\",\"time\":\"18:16, Сегодня\",\"description\":\"Сейчас проигрывается:\",\"icon\":\"music\",\"size\":\"m\",\"data\":{\"albumcover\":\"https://avatars.yandex.net/get-music-content/193823/1820a43e.a.5517056-1/m1000x1000\",\"artist\":\"Florence & The Machine\",\"track\":{\"name\":\"Big God\",\"length\":\"4:31\"},\"volume\":80}},{\"type\":\"info\",\"title\":\"Заканчивается молоко\",\"source\":\"Холодильник\",\"time\":\"17:23, Сегодня\",\"description\":\"Кажется, в холодильнике заканчивается молоко. Вы хотите добавить его в список покупок?\",\"icon\":\"fridge\",\"size\":\"m\",\"data\":{\"buttons\":[\"Да\",\"Нет\"]}},{\"type\":\"info\",\"title\":\"Зарядка завершена\",\"source\":\"Оконный сенсор\",\"time\":\"16:22, Сегодня\",\"description\":\"Ура! Устройство «Оконный сенсор» снова в строю!\",\"icon\":\"battery\",\"size\":\"s\"},{\"type\":\"critical\",\"title\":\"Пылесос застрял\",\"source\":\"Сенсор движения\",\"time\":\"16:17, Сегодня\",\"description\":\"Робопылесос не смог сменить свое местоположение в течение последних 3 минут. Похоже, ему нужна помощь.\",\"icon\":\"cam\",\"data\":{\"image\":\"get_it_from_mocks_:3.jpg\"},\"size\":\"l\"},{\"type\":\"info\",\"title\":\"Вода вскипела\",\"source\":\"Чайник\",\"time\":\"16:20, Сегодня\",\"description\":null,\"icon\":\"kettle\",\"size\":\"s\"}]};\n\n//# sourceURL=webpack:///./src/events.json?");
-
-/***/ }),
-
-/***/ "./src/fridge.svg":
-/*!************************!*\
-  !*** ./src/fridge.svg ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"b70a2893618aabc07f3e042395476a12.svg\";\n\n//# sourceURL=webpack:///./src/fridge.svg?");
-
-/***/ }),
-
-/***/ "./src/icon_list_m@2x.png":
+/***/ "./src/images/battery.svg":
 /*!********************************!*\
-  !*** ./src/icon_list_m@2x.png ***!
+  !*** ./src/images/battery.svg ***!
   \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"2b6aa45dcd53f71bf733a33928d91e24.png\";\n\n//# sourceURL=webpack:///./src/icon_list_m@2x.png?");
+eval("module.exports = __webpack_require__.p + \"b975a1eab1df3014bb0e6f662d0c2c7f.svg\";\n\n//# sourceURL=webpack:///./src/images/battery.svg?");
+
+/***/ }),
+
+/***/ "./src/images/fridge.svg":
+/*!*******************************!*\
+  !*** ./src/images/fridge.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"b70a2893618aabc07f3e042395476a12.svg\";\n\n//# sourceURL=webpack:///./src/images/fridge.svg?");
+
+/***/ }),
+
+/***/ "./src/images/icon_list_m@2x.png":
+/*!***************************************!*\
+  !*** ./src/images/icon_list_m@2x.png ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"2b6aa45dcd53f71bf733a33928d91e24.png\";\n\n//# sourceURL=webpack:///./src/images/icon_list_m@2x.png?");
+
+/***/ }),
+
+/***/ "./src/images/kettle.svg":
+/*!*******************************!*\
+  !*** ./src/images/kettle.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"bc0882bc0c39c282502ffa53bc6c7829.svg\";\n\n//# sourceURL=webpack:///./src/images/kettle.svg?");
+
+/***/ }),
+
+/***/ "./src/images/key.svg":
+/*!****************************!*\
+  !*** ./src/images/key.svg ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"a5ec5fd40c40057427294f2b5dcd49e7.svg\";\n\n//# sourceURL=webpack:///./src/images/key.svg?");
+
+/***/ }),
+
+/***/ "./src/images/music.svg":
+/*!******************************!*\
+  !*** ./src/images/music.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"dfa40fb45084b3c3632e55e309783138.svg\";\n\n//# sourceURL=webpack:///./src/images/music.svg?");
+
+/***/ }),
+
+/***/ "./src/images/robot-cleaner.svg":
+/*!**************************************!*\
+  !*** ./src/images/robot-cleaner.svg ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"cea93be51b62941d9e76d9bed1fa9c61.svg\";\n\n//# sourceURL=webpack:///./src/images/robot-cleaner.svg?");
+
+/***/ }),
+
+/***/ "./src/images/router.svg":
+/*!*******************************!*\
+  !*** ./src/images/router.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"4ca7829ee87e7796a23a1ed51982d804.svg\";\n\n//# sourceURL=webpack:///./src/images/router.svg?");
+
+/***/ }),
+
+/***/ "./src/images/stats.svg":
+/*!******************************!*\
+  !*** ./src/images/stats.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"33b0379147ec7ac0823b6e078402323e.svg\";\n\n//# sourceURL=webpack:///./src/images/stats.svg?");
+
+/***/ }),
+
+/***/ "./src/images/thermal.svg":
+/*!********************************!*\
+  !*** ./src/images/thermal.svg ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"dc2995b06349bf95ae651985365a74d6.svg\";\n\n//# sourceURL=webpack:///./src/images/thermal.svg?");
 
 /***/ }),
 
@@ -204,73 +281,7 @@ eval("module.exports = __webpack_require__.p + \"2b6aa45dcd53f71bf733a33928d91e2
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _events_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events.json */ \"./src/events.json\");\nvar _events_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./events.json */ \"./src/events.json\", 1);\n/* harmony import */ var _stats_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stats.svg */ \"./src/stats.svg\");\n/* harmony import */ var _stats_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_stats_svg__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _key_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./key.svg */ \"./src/key.svg\");\n/* harmony import */ var _key_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_key_svg__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _robot_cleaner_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./robot-cleaner.svg */ \"./src/robot-cleaner.svg\");\n/* harmony import */ var _robot_cleaner_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_robot_cleaner_svg__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _router_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./router.svg */ \"./src/router.svg\");\n/* harmony import */ var _router_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_router_svg__WEBPACK_IMPORTED_MODULE_5__);\n/* harmony import */ var _thermal_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./thermal.svg */ \"./src/thermal.svg\");\n/* harmony import */ var _thermal_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_thermal_svg__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _air_conditioner_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./air-conditioner.svg */ \"./src/air-conditioner.svg\");\n/* harmony import */ var _air_conditioner_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_air_conditioner_svg__WEBPACK_IMPORTED_MODULE_7__);\n/* harmony import */ var _music_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./music.svg */ \"./src/music.svg\");\n/* harmony import */ var _music_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_music_svg__WEBPACK_IMPORTED_MODULE_8__);\n/* harmony import */ var _fridge_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./fridge.svg */ \"./src/fridge.svg\");\n/* harmony import */ var _fridge_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_fridge_svg__WEBPACK_IMPORTED_MODULE_9__);\n/* harmony import */ var _battery_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./battery.svg */ \"./src/battery.svg\");\n/* harmony import */ var _battery_svg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_battery_svg__WEBPACK_IMPORTED_MODULE_10__);\n/* harmony import */ var _kettle_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./kettle.svg */ \"./src/kettle.svg\");\n/* harmony import */ var _kettle_svg__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_kettle_svg__WEBPACK_IMPORTED_MODULE_11__);\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconsole.log('hello there');\r\nconsole.log(_events_json__WEBPACK_IMPORTED_MODULE_1__.events);\r\n\r\nwindow.addEventListener('load', () => {\r\n  _events_json__WEBPACK_IMPORTED_MODULE_1__.events.forEach((element) => {\r\n    createCard(element);\r\n  });\r\n});\r\nfunction createCard(e) {\r\n  // Test to see if the browser supports the HTML template element by checking\r\n// for the presence of the template element's content attribute.\r\n  if ('content' in document.createElement('template')) {\r\n    let card = document.getElementById('card-tempo');\r\n    let clone = document.importNode(card.content, true);\r\n\r\n    let cloneCard = clone.querySelector('.card');\r\n    //  title\r\n    let title = clone.querySelector('.title');\r\n    title.innerHTML = e.title;\r\n    // icon\r\n    let icon = clone.querySelector('.icon');\r\n    switch (e.icon) {\r\n      case 'stats':\r\n        icon.src = _stats_svg__WEBPACK_IMPORTED_MODULE_2___default.a;\r\n        break;\r\n      case 'key':\r\n        icon.src = _key_svg__WEBPACK_IMPORTED_MODULE_3___default.a;\r\n        break;\r\n      case 'robot-cleaner':\r\n        icon.src = _robot_cleaner_svg__WEBPACK_IMPORTED_MODULE_4___default.a;\r\n        break;\r\n      case 'router':\r\n        icon.src = _router_svg__WEBPACK_IMPORTED_MODULE_5___default.a;\r\n        break;\r\n      case 'thermal':\r\n        icon.src = _thermal_svg__WEBPACK_IMPORTED_MODULE_6___default.a;\r\n        break;\r\n      case 'ac':\r\n        icon.src = _air_conditioner_svg__WEBPACK_IMPORTED_MODULE_7___default.a;\r\n        break;\r\n      case 'music':\r\n        icon.src = _music_svg__WEBPACK_IMPORTED_MODULE_8___default.a;\r\n        break;\r\n      case 'fridge':\r\n        icon.src = _fridge_svg__WEBPACK_IMPORTED_MODULE_9___default.a;\r\n        break;\r\n      case 'battery':\r\n        icon.src = _battery_svg__WEBPACK_IMPORTED_MODULE_10___default.a;\r\n        break;\r\n      case 'kettle':\r\n        icon.src = _kettle_svg__WEBPACK_IMPORTED_MODULE_11___default.a;\r\n        break;\r\n      default:\r\n        icon.src = '';\r\n    }\r\n    //  description\r\n    let desc = clone.querySelector('.description');\r\n    if (e.description === null) {\r\n      desc.remove();\r\n    } else {\r\n      desc.innerHTML = e.description;\r\n    }\r\n    //  source\r\n    let source = clone.querySelector('.source');\r\n    source.innerHTML = e.source;\r\n    //  time\r\n    let time = clone.querySelector('.time');\r\n    time.innerHTML = e.time;\r\n    let cardGrid = document.getElementById('card-grid');\r\n    console.log(e);\r\n    if (e.size === 's') {\r\n      cloneCard.classList.add('card_s');\r\n    }\r\n    if (e.type === 'info') {\r\n      // cloneCard.classList.add('info');\r\n    } else\r\n    if (e.type === 'critical') {\r\n      // cloneCard.classList.add('critical');\r\n      cloneCard.querySelector('.header').classList.add('critical');\r\n    }\r\n    cardGrid.appendChild(clone);\r\n  } else {\r\n    // Find another way to add the rows to the table because\r\n  // the HTML template element is not supported.\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/kettle.svg":
-/*!************************!*\
-  !*** ./src/kettle.svg ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"bc0882bc0c39c282502ffa53bc6c7829.svg\";\n\n//# sourceURL=webpack:///./src/kettle.svg?");
-
-/***/ }),
-
-/***/ "./src/key.svg":
-/*!*********************!*\
-  !*** ./src/key.svg ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"a5ec5fd40c40057427294f2b5dcd49e7.svg\";\n\n//# sourceURL=webpack:///./src/key.svg?");
-
-/***/ }),
-
-/***/ "./src/music.svg":
-/*!***********************!*\
-  !*** ./src/music.svg ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"dfa40fb45084b3c3632e55e309783138.svg\";\n\n//# sourceURL=webpack:///./src/music.svg?");
-
-/***/ }),
-
-/***/ "./src/robot-cleaner.svg":
-/*!*******************************!*\
-  !*** ./src/robot-cleaner.svg ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"cea93be51b62941d9e76d9bed1fa9c61.svg\";\n\n//# sourceURL=webpack:///./src/robot-cleaner.svg?");
-
-/***/ }),
-
-/***/ "./src/router.svg":
-/*!************************!*\
-  !*** ./src/router.svg ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"4ca7829ee87e7796a23a1ed51982d804.svg\";\n\n//# sourceURL=webpack:///./src/router.svg?");
-
-/***/ }),
-
-/***/ "./src/stats.svg":
-/*!***********************!*\
-  !*** ./src/stats.svg ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"33b0379147ec7ac0823b6e078402323e.svg\";\n\n//# sourceURL=webpack:///./src/stats.svg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _images_stats_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./images/stats.svg */ \"./src/images/stats.svg\");\n/* harmony import */ var _images_stats_svg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_images_stats_svg__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _images_key_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./images/key.svg */ \"./src/images/key.svg\");\n/* harmony import */ var _images_key_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_images_key_svg__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _images_robot_cleaner_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/robot-cleaner.svg */ \"./src/images/robot-cleaner.svg\");\n/* harmony import */ var _images_robot_cleaner_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_images_robot_cleaner_svg__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _images_router_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./images/router.svg */ \"./src/images/router.svg\");\n/* harmony import */ var _images_router_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_images_router_svg__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _images_thermal_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./images/thermal.svg */ \"./src/images/thermal.svg\");\n/* harmony import */ var _images_thermal_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_images_thermal_svg__WEBPACK_IMPORTED_MODULE_5__);\n/* harmony import */ var _images_air_conditioner_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./images/air-conditioner.svg */ \"./src/images/air-conditioner.svg\");\n/* harmony import */ var _images_air_conditioner_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_images_air_conditioner_svg__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _images_music_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./images/music.svg */ \"./src/images/music.svg\");\n/* harmony import */ var _images_music_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_images_music_svg__WEBPACK_IMPORTED_MODULE_7__);\n/* harmony import */ var _images_fridge_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./images/fridge.svg */ \"./src/images/fridge.svg\");\n/* harmony import */ var _images_fridge_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_images_fridge_svg__WEBPACK_IMPORTED_MODULE_8__);\n/* harmony import */ var _images_battery_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./images/battery.svg */ \"./src/images/battery.svg\");\n/* harmony import */ var _images_battery_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_images_battery_svg__WEBPACK_IMPORTED_MODULE_9__);\n/* harmony import */ var _images_kettle_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./images/kettle.svg */ \"./src/images/kettle.svg\");\n/* harmony import */ var _images_kettle_svg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_images_kettle_svg__WEBPACK_IMPORTED_MODULE_10__);\n/* harmony import */ var _images_Richdata_Graph_Alternative_jpg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./images/Richdata Graph Alternative.jpg */ \"./src/images/Richdata Graph Alternative.jpg\");\n/* harmony import */ var _images_Richdata_Graph_Alternative_jpg__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_images_Richdata_Graph_Alternative_jpg__WEBPACK_IMPORTED_MODULE_11__);\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nwindow.addEventListener('load', () => {\r\n  fetchEvents().then((events) => {\r\n    if (events.hasOwnProperty('events')) {\r\n      events.events.forEach((element) => {\r\n        createCard(element);\r\n      });\r\n    } else {\r\n      throw new Error('events not found');\r\n    }\r\n  });\r\n});\r\nasync function fetchEvents(type, limit) {\r\n  let myHeaders = new Headers();\r\n  let endpoint = 'http://localhost:8000/api/events';\r\n  myHeaders.append('x-requested-with', 'XMLHttpRequest');\r\n  let params = new URLSearchParams();\r\n  if (type) {\r\n    params.append('type', type);\r\n  }\r\n  if (limit) {\r\n    params.append('limit', limit);\r\n  }\r\n  try {\r\n    let result = await fetch(endpoint,\r\n        {\r\n          method: 'POST',\r\n          body: params,\r\n          headers: myHeaders,\r\n        });\r\n    if (result.status !== 200) {\r\n      throw new Error(`failed with code ${result.status}`);\r\n    } else {\r\n      let data = await result.json();\r\n      return data;\r\n    }\r\n  } catch (e) {\r\n    console.log(e);\r\n    throw e;\r\n  }\r\n}\r\nfunction createCard(e) {\r\n  // Test to see if the browser supports the HTML template element by checking\r\n// for the presence of the template element's content attribute.\r\n  if ('content' in document.createElement('template')) {\r\n    let card = document.getElementById('card-tempo');\r\n    let clone = document.importNode(card.content, true);\r\n\r\n    let cloneCard = clone.querySelector('.card');\r\n    //  title\r\n    let title = clone.querySelector('.title');\r\n    title.innerHTML = e.title;\r\n    // icon\r\n    let icon = clone.querySelector('.icon');\r\n    switch (e.icon) {\r\n      case 'stats':\r\n        icon.src = _images_stats_svg__WEBPACK_IMPORTED_MODULE_1___default.a;\r\n        break;\r\n      case 'key':\r\n        icon.src = _images_key_svg__WEBPACK_IMPORTED_MODULE_2___default.a;\r\n        break;\r\n      case 'robot-cleaner':\r\n        icon.src = _images_robot_cleaner_svg__WEBPACK_IMPORTED_MODULE_3___default.a;\r\n        break;\r\n      case 'router':\r\n        icon.src = _images_router_svg__WEBPACK_IMPORTED_MODULE_4___default.a;\r\n        break;\r\n      case 'thermal':\r\n        icon.src = _images_thermal_svg__WEBPACK_IMPORTED_MODULE_5___default.a;\r\n        break;\r\n      case 'ac':\r\n        icon.src = _images_air_conditioner_svg__WEBPACK_IMPORTED_MODULE_6___default.a;\r\n        break;\r\n      case 'music':\r\n        icon.src = _images_music_svg__WEBPACK_IMPORTED_MODULE_7___default.a;\r\n        break;\r\n      case 'fridge':\r\n        icon.src = _images_fridge_svg__WEBPACK_IMPORTED_MODULE_8___default.a;\r\n        break;\r\n      case 'battery':\r\n        icon.src = _images_battery_svg__WEBPACK_IMPORTED_MODULE_9___default.a;\r\n        break;\r\n      case 'kettle':\r\n        icon.src = _images_kettle_svg__WEBPACK_IMPORTED_MODULE_10___default.a;\r\n        break;\r\n      default:\r\n        icon.src = '';\r\n    }\r\n    //  description\r\n    let desc = clone.querySelector('.description');\r\n    if (e.description === null) {\r\n      desc.remove();\r\n    } else {\r\n      desc.innerHTML = e.description;\r\n    }\r\n    //  source\r\n    let source = clone.querySelector('.source');\r\n    source.innerHTML = e.source;\r\n    //  time\r\n    let time = clone.querySelector('.time');\r\n    time.innerHTML = e.time;\r\n    let cardGrid = document.getElementById('card-grid');\r\n    if (e.size === 's') {\r\n      cloneCard.classList.add('card_s');\r\n    }\r\n    if (e.type === 'info') {\r\n      // cloneCard.classList.add('info');\r\n    } else\r\n    if (e.type === 'critical') {\r\n      // cloneCard.classList.add('critical');\r\n      cloneCard.querySelector('.header').classList.add('critical');\r\n    }\r\n    if (e.data) {\r\n      if (e.data.image === 'get_it_from_mocks_:3.jpg') {\r\n        let image = cloneCard.querySelector('.camera-footage');\r\n        image.src = _images_Richdata_Graph_Alternative_jpg__WEBPACK_IMPORTED_MODULE_11___default.a;\r\n      }\r\n    }\r\n    cardGrid.appendChild(clone);\r\n  } else {\r\n    // Find another way to add the rows to the table because\r\n  // the HTML template element is not supported.\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -282,17 +293,6 @@ eval("module.exports = __webpack_require__.p + \"33b0379147ec7ac0823b6e078402323
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("\nvar content = __webpack_require__(/*! !../node_modules/css-loader!./style.css */ \"./node_modules/css-loader/index.js!./src/style.css\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./src/style.css?");
-
-/***/ }),
-
-/***/ "./src/thermal.svg":
-/*!*************************!*\
-  !*** ./src/thermal.svg ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"dc2995b06349bf95ae651985365a74d6.svg\";\n\n//# sourceURL=webpack:///./src/thermal.svg?");
 
 /***/ })
 
